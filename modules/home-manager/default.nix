@@ -12,6 +12,11 @@
   ];
   
   programs.zsh.enable = true;
+  programs.zsh.enableCompletion = true;
+  programs.zsh.autosuggestion.enable = true;
+  programs.zsh.syntaxHighlighting.enable = true;
+  programs.zsh.history.extended = true;
+  programs.zsh.defaultKeymap = "vicmd";
   programs.zsh.shellAliases = {
     nixswitch = "darwin-rebuild switch --flake ${self}";
   };
