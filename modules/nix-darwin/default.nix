@@ -9,6 +9,12 @@
     extra-experimental-features = nix-command flakes
   '';
   
+  fonts.fontDir.enable = true;
+  fonts.fonts = [ (pkgs.nerdfonts.override { fonts = [ "Meslo" ]; }) ];
+  
+  system.defaults.NSGlobalDomain.InitialKeyRepeat = 15;
+  # Makes the keyboard repeat faster
+  system.defaults.NSGlobalDomain.KeyRepeat = 1;
   system.defaults.dock.autohide = true;
   # Makes switching spaces faster
   system.defaults.universalaccess.reduceMotion = true;
