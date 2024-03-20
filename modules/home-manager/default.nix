@@ -9,6 +9,7 @@
   home.packages = [
     pkgs.raycast
     pkgs.kitty
+    pkgs.nil  # Nix LSP
   ];
   
   programs.zsh.enable = true;
