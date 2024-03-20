@@ -8,6 +8,7 @@
   
   home.packages = [
     pkgs.raycast
+    pkgs.kitty
   ];
   
   programs.zsh.enable = true;
