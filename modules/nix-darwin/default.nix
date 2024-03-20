@@ -24,6 +24,7 @@
     "1password"
     "amethyst"
     "arc"
+    "raycast"
   ];
   programs.zsh.enable = true;
 }
