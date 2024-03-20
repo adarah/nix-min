@@ -6,6 +6,10 @@
     HELLO = "world!";
   };
   
+  home.packages = [
+    pkgs.raycast
+  ];
+  
   programs.zsh.enable = true;
   programs.zsh.shellAliases = {
     nixswitch = "darwin-rebuild switch --flake ${self}";

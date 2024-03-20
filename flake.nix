@@ -17,7 +17,6 @@
   in {
     darwinConfigurations."MBP-M1" = nix-darwin.lib.darwinSystem {
       inherit system;
-      pkgs = import nixpkgs { inherit system; };
       modules = [
         ./modules/nix-darwin
         home-manager.darwinModules.home-manager {
