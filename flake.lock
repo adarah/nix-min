@@ -20,6 +20,22 @@
         "type": "github"
       }
     },
+    "kitty-icon": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1659349637,
+        "narHash": "sha256-Vy+iLGnysrJMSLfkaYq15pb/wG4kIbfsXRrPgSc3OFs=",
+        "owner": "DinkDonk",
+        "repo": "kitty-icon",
+        "rev": "269c0f0bd1c792cebc7821f299ce9250ed9bcd67",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DinkDonk",
+        "repo": "kitty-icon",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -59,6 +75,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "kitty-icon": "kitty-icon",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs"
       }

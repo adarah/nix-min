@@ -1,13 +1,13 @@
-{ self, pkgs, ... }: {
+{ pkgs, kitty-icon, ... }: 
+{
   home.username = "mag";
   home.homeDirectory = "/Users/mag";
   home.stateVersion = "24.05";
   home.sessionVariables = {
-    HELLO = "world!";
+    EDITOR = "nvim";
   };
   
   home.packages = [
-    pkgs.kitty
     pkgs.nil  # Nix LSP
   ];
   
@@ -18,8 +18,20 @@
   programs.zsh.history.extended = true;
   programs.zsh.defaultKeymap = "viins";
   programs.zsh.shellAliases = {
-    nixswitch = "darwin-rebuild switch --flake ${self}";
+    nixswitch = "darwin-rebuild switch --flake ~/Projects/nix-min";
   };
   
   programs.starship.enable = true;
+  programs.kitty.package = pkgs.kitty.overrideAttrs (o: {
+    postInstall = (o.postInstall or "") + ''
+      cp ${kitty-icon}/kitty-dark.icns $out/Applications/kitty.app/Contents/Resources/kitty.icns
+    '';
+  });
+  programs.kitty.enable = true;
+  programs.kitty.font.name = "MesloLGS Nerd Font Mono";
+  programs.kitty.font.size = 14;
+  programs.kitty.theme = "Catppuccin-Frappe";
+  
+  
+  programs.zoxide.enable = true;
 }

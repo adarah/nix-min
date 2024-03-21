@@ -9,9 +9,14 @@
 
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    
+    # catppuccin-kitty.url = "github:catppuccin/kittky";
+    # catppuccin-kitty.flake = false;
+    kitty-icon.url = "github:DinkDonk/kitty-icon";
+    kitty-icon.flake = false;
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-darwin }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, nix-darwin, kitty-icon  }: 
   let
     system = "aarch64-darwin";
   in {
@@ -25,7 +30,7 @@
             useUserPackages = true;
             users.mag = import ./modules/home-manager;
             extraSpecialArgs =  {
-              inherit self;
+              inherit self kitty-icon;
             };
           };
         }
