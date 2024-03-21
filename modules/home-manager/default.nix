@@ -5,6 +5,7 @@
   home.stateVersion = "24.05";
   home.sessionVariables = {
     EDITOR = "nvim";
+    KEYTIMEOUT = 1;
   };
   
   home.packages = [
@@ -31,7 +32,35 @@
   programs.kitty.font.name = "MesloLGS Nerd Font Mono";
   programs.kitty.font.size = 14;
   programs.kitty.theme = "Catppuccin-Frappe";
-  
+
   
   programs.zoxide.enable = true;
+  
+  programs.tealdeer.enable = true;
+  
+  programs.atuin.enable = true;
+
+  programs.bat.enable = true;
+  programs.bat.extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batwatch ];
+  
+  programs.bottom.enable = true;
+  
+  programs.direnv.enable = true;
+  
+  programs.eza.enable = true;
+  
+  programs.fzf.enable = true;
+  
+  programs.git.enable = true;
+
+  programs.jq.enable = true;
+  
+  programs.less.enable = true;
+  
+  programs.navi.enable = true;
+  
+  programs.neovim.enable = true;
+  
+  programs.ripgrep.enable = true;
+  
 }

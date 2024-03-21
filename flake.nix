@@ -10,8 +10,6 @@
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     
-    # catppuccin-kitty.url = "github:catppuccin/kittky";
-    # catppuccin-kitty.flake = false;
     kitty-icon.url = "github:DinkDonk/kitty-icon";
     kitty-icon.flake = false;
   };
