@@ -21,12 +21,12 @@
     darwinConfigurations."MBP-M1" = nix-darwin.lib.darwinSystem {
       inherit system;
       modules = [
-        ./modules/nix-darwin
+        (import ./modules/nix-darwin "mag")
         home-manager.darwinModules.home-manager {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.mag = import ./modules/home-manager;
+            users.mag = import ./modules/home-manager "mag";
             extraSpecialArgs =  {
               inherit self kitty-icon;
             };

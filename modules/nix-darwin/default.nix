@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  users.users.mag.home = "/Users/mag";
+username: { pkgs, ... }: {
+  users.users.mag.home = "/Users/${username}";
   system.stateVersion = 4;
   nix.useDaemon = true;
   nixpkgs.config = {
@@ -8,6 +8,19 @@
   nix.extraOptions = ''
     extra-experimental-features = nix-command flakes
   '';
+  
+  nix.settings.substituters = [
+    "https://cache.nixos.org"
+    "https://nix-community.cachix.org"
+  ];
+
+  nix.settings.trusted-substituters = [
+    "https://cache.nixos.org"
+    "https://nix-community.cachix.org"
+  ];
+  nix.settings.trusted-public-keys = [
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+  ];
   
   fonts.fontDir.enable = true;
   fonts.fonts = [ (pkgs.nerdfonts.override { fonts = [ "Meslo" ]; }) ];
@@ -26,6 +39,10 @@
   # option-shift-0: Open workspace 10
   
   homebrew.enable = true;
+  homebrew.brews = [
+    "zoxide"
+    "watson"
+  ];
   homebrew.casks = [
     "1password"
     "amethyst"
