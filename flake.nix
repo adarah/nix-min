@@ -9,30 +9,38 @@
 
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    
+
     kitty-icon.url = "github:DinkDonk/kitty-icon";
     kitty-icon.flake = false;
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-darwin, kitty-icon  }: 
-  let
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    home-manager,
+    nix-darwin,
+    kitty-icon,
+  }: let
     system = "aarch64-darwin";
   in {
     darwinConfigurations."MBP-M1" = nix-darwin.lib.darwinSystem {
       inherit system;
       modules = [
         (import ./modules/nix-darwin "mag")
-        home-manager.darwinModules.home-manager {
+        home-manager.darwinModules.home-manager
+        {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             users.mag = import ./modules/home-manager "mag";
-            extraSpecialArgs =  {
+            extraSpecialArgs = {
               inherit self kitty-icon;
             };
           };
         }
       ];
     };
+
+    formatter."${system}" = nixpkgs.legacyPackages.${system}.alejandra;
   };
 }
