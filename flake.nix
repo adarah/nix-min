@@ -12,6 +12,9 @@
 
     kitty-icon.url = "github:DinkDonk/kitty-icon";
     kitty-icon.flake = false;
+
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -20,11 +23,13 @@
     home-manager,
     nix-darwin,
     kitty-icon,
+    nixvim,
   }: let
     system = "aarch64-darwin";
   in {
     darwinConfigurations."MBP-M1" = nix-darwin.lib.darwinSystem {
       inherit system;
+      specialArgs = { inherit inputs; };
       modules = [
         (import ./modules/nix-darwin "mag")
         home-manager.darwinModules.home-manager
@@ -38,7 +43,9 @@
             };
           };
         }
+        (import ./modules/mynixvim)
       ];
+
     };
 
     formatter."${system}" = nixpkgs.legacyPackages.${system}.alejandra;

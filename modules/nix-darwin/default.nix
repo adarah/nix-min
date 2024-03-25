@@ -9,17 +9,20 @@ username: {pkgs, ...}: {
     extra-experimental-features = nix-command flakes
   '';
 
-  nix.settings.substituters = [
-    "https://cache.nixos.org"
-    "https://nix-community.cachix.org"
+  nix.settings.trusted-users = [
+    "mag"
   ];
-
-  nix.settings.trusted-substituters = [
-    "https://cache.nixos.org"
+  nix.settings.substituters = [
     "https://nix-community.cachix.org"
+    "https://devenv.cachix.org"
+  ];
+  nix.settings.trusted-substituters = [
+    "https://nix-community.cachix.org"
+    "https://devenv.cachix.org"
   ];
   nix.settings.trusted-public-keys = [
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
   ];
 
   fonts.fontDir.enable = true;
@@ -27,7 +30,7 @@ username: {pkgs, ...}: {
 
   system.defaults.NSGlobalDomain.InitialKeyRepeat = 15;
   # Makes the keyboard repeat faster
-  system.defaults.NSGlobalDomain.KeyRepeat = 1;
+  system.defaults.NSGlobalDomain.KeyRepeat = 3;
   system.defaults.dock.autohide = true;
   # Makes switching spaces faster
   system.defaults.universalaccess.reduceMotion = true;
@@ -42,6 +45,7 @@ username: {pkgs, ...}: {
   homebrew.brews = [
     "zoxide"
     "watson"
+    "jq"
   ];
   homebrew.casks = [
     "1password"
@@ -49,5 +53,5 @@ username: {pkgs, ...}: {
     "arc"
     "raycast"
   ];
-  programs.zsh.enable = true;
+  programs.zsh.enable = true; 
 }

@@ -16,7 +16,7 @@ username: {
     pkgs.nil # Nix LSP
     pkgs.fx # JSON terminal viewer
     pkgs.httpie
-    pkgs.nixpkgs-fmt
+    pkgs.cachix  # For devenv
   ];
 
   programs.zsh.enable = true;
@@ -71,7 +71,7 @@ username: {
 
   programs.navi.enable = true;
 
-  programs.neovim.enable = true;
+  # programs.neovim.enable = true;
 
   programs.ripgrep.enable = true;
 }
